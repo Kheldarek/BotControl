@@ -1,17 +1,43 @@
 package kheldar.botcontrol;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
-public class GetAccelerometer extends ActionBarActivity {
+public class GetAccelerometer extends ActionBarActivity implements SensorEventListener {
+    SensorManager manager;
+    TextView X,Y,Z; // to display accelerometer axis X,Y and Z
+    Button BTS,BTC,VIS; //bt server, bt client, visible
+    Sensor accelerometer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_accelerometer);
+        X=(TextView) findViewById(R.id.Xaxis);
+        Y=(TextView) findViewById(R.id.Yaxis);
+        Z=(TextView) findViewById(R.id.Zaxis);
+        BTC = (Button) findViewById(R.id.BTC);
+        BTS = (Button) findViewById(R.id.BTS);
+        VIS = (Button) findViewById(R.id.VIS);
+        X.setText("");
+        Y.setText("");
+        Z.setText("");
+
+        manager= (SensorManager)getSystemService(SENSOR_SERVICE);
+        manager.registerListener(this,manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),0,null);
+        accelerometer=  manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
     }
 
 
@@ -35,5 +61,31 @@ public class GetAccelerometer extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event)
+    {
+        X.setText(String.valueOf(event.values[0]));
+        Y.setText(String.valueOf(event.values[1]));
+        Z.setText(String.valueOf(event.values[2]));
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+    public void BTServer(View v)
+    {
+        Toast.makeText(getApplicationContext(),"Server BT not implemented... yet",Toast.LENGTH_SHORT).show();
+    }
+    public void BTVisible(View v)
+    {
+        Toast.makeText(getApplicationContext(),"BT Visibility not implemented... yet",Toast.LENGTH_SHORT).show();
+    }
+    public void BTClient(View v)
+    {
+        Toast.makeText(getApplicationContext(),"Client BT not implemented... yet",Toast.LENGTH_SHORT).show();
     }
 }
