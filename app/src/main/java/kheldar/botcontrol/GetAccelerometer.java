@@ -13,6 +13,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//TODO: implement BT functions: visibility,client,server
+// TODO: paired list and pairing (different activity probably)
+
 
 public class GetAccelerometer extends ActionBarActivity implements SensorEventListener {
     SensorManager manager;
@@ -87,5 +90,9 @@ public class GetAccelerometer extends ActionBarActivity implements SensorEventLi
     public void BTClient(View v)
     {
         Toast.makeText(getApplicationContext(),"Client BT not implemented... yet",Toast.LENGTH_SHORT).show();
+    }
+    public void BTPairedList(View v)
+    {
+        Toast.makeText(getApplicationContext(),"PairedList not implemented... yet",Toast.LENGTH_SHORT).show();
     }
 }
