@@ -3,9 +3,98 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".GetAccelerometer">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".GetAccelerometer"
+    android:id="@+id/activity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/Xaxis"
+        android:layout_marginTop="54dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/Yaxis"
+        android:layout_below="@+id/Xaxis"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/Zaxis"
+        android:layout_below="@+id/Yaxis"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/result"
+        android:layout_alignTop="@+id/BTFind"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BT Client"
+        android:id="@+id/BTC"
+        android:onClick="BTClient"
+        android:layout_above="@+id/BTFind"
+        android:layout_alignRight="@+id/BTFind"
+        android:layout_alignEnd="@+id/BTFind" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BT SERVER"
+        android:id="@+id/BTS"
+        android:onClick="BTServer"
+        android:layout_above="@+id/BTC"
+        android:layout_alignLeft="@+id/BTC"
+        android:layout_alignStart="@+id/BTC" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Visible"
+        android:id="@+id/VIS"
+        android:onClick="BTVisible"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Paired list"
+        android:id="@+id/pair"
+        android:onClick="BTPairedList"
+        android:layout_alignBottom="@+id/Xaxis"
+        android:layout_alignLeft="@+id/BTC"
+        android:layout_alignStart="@+id/BTC" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BT FIND"
+        android:id="@+id/BTFind"
+        android:layout_above="@+id/VIS"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

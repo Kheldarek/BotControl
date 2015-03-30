@@ -1,9 +1,13 @@
 package kheldar.botcontrol;
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,7 +17,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//TODO: implement BT functions: visibility,client,server
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Set;
+
+//TODO: implement BT functions: client,server,finding devices
 // TODO: paired list and pairing (different activity probably)
 
 
@@ -85,14 +93,25 @@ public class GetAccelerometer extends ActionBarActivity implements SensorEventLi
     }
     public void BTVisible(View v)
     {
-        Toast.makeText(getApplicationContext(),"BT Visibility not implemented... yet",Toast.LENGTH_SHORT).show();
+        Intent Visible = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+        Visible.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,300);
+        startActivity(Visible);
+        //Toast.makeText(getApplicationContext(),"BT Visibility not implemented... yet",Toast.LENGTH_SHORT).show();
     }
     public void BTClient(View v)
     {
         Toast.makeText(getApplicationContext(),"Client BT not implemented... yet",Toast.LENGTH_SHORT).show();
     }
+
     public void BTPairedList(View v)
     {
+
+        Intent showList = new Intent(this,PairedList.class);
+        startActivity(showList);
         Toast.makeText(getApplicationContext(),"PairedList not implemented... yet",Toast.LENGTH_SHORT).show();
+    }
+    public void BTFind(View v)
+    {
+        Toast.makeText(getApplicationContext(),"Finding devices not implemented... yet",Toast.LENGTH_SHORT).show();
     }
 }
