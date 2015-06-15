@@ -10,10 +10,12 @@ import android.hardware.SensorManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +32,14 @@ public class GetAccelerometer extends ActionBarActivity implements SensorEventLi
     TextView X,Y,Z; // to display accelerometer axis X,Y and Z
     Button BTS,BTC,VIS; //bt server, bt client, visible
     Sensor accelerometer;
+    EditText et1; //btserver mac
+    BluetoothAdapter ba ;
+    BluetoothDevice server;
+    BtClient current;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +51,17 @@ public class GetAccelerometer extends ActionBarActivity implements SensorEventLi
         BTC = (Button) findViewById(R.id.BTC);
         BTS = (Button) findViewById(R.id.BTS);
         VIS = (Button) findViewById(R.id.VIS);
+        et1= (EditText) findViewById(R.id.editText);
         X.setText("");
         Y.setText("");
         Z.setText("");
+        et1.setText("20:14:11:26:03:80");
 
         manager= (SensorManager)getSystemService(SENSOR_SERVICE);
         manager.registerListener(this,manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),0,null);
         accelerometer=  manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        ba = BluetoothAdapter.getDefaultAdapter();
+        server = ba.getRemoteDevice(et1.getText().toString());
 
     }
 
@@ -87,9 +101,14 @@ public class GetAccelerometer extends ActionBarActivity implements SensorEventLi
 
     }
 
-    public void BTServer(View v)
+    public void BTServerActivate(View v)
     {
-        Toast.makeText(getApplicationContext(),"Server BT not implemented... yet",Toast.LENGTH_SHORT).show();
+
+
+
+
+
+        // Toast.makeText(getApplicationContext(),"Server BT not implemented... yet",Toast.LENGTH_SHORT).show();
     }
     public void BTVisible(View v)
     {
@@ -98,9 +117,15 @@ public class GetAccelerometer extends ActionBarActivity implements SensorEventLi
         startActivity(Visible);
         //Toast.makeText(getApplicationContext(),"BT Visibility not implemented... yet",Toast.LENGTH_SHORT).show();
     }
-    public void BTClient(View v)
+    public void BTClientActivate(View v)
     {
-        Toast.makeText(getApplicationContext(),"Client BT not implemented... yet",Toast.LENGTH_SHORT).show();
+        Log.d("btA", "wlaczanie clienta");
+        BluetoothAdapter ba = BluetoothAdapter.getDefaultAdapter();
+        BluetoothDevice server= ba.getRemoteDevice(et1.getText().toString());
+        current = new BtClient(server,Z,Y);
+        current.start();
+
+       // Toast.makeText(getApplicationContext(),"Client BT not implemented... yet",Toast.LENGTH_SHORT).show();
     }
 
     public void BTPairedList(View v)
@@ -108,10 +133,14 @@ public class GetAccelerometer extends ActionBarActivity implements SensorEventLi
 
         Intent showList = new Intent(this,PairedList.class);
         startActivity(showList);
-        Toast.makeText(getApplicationContext(),"PairedList not implemented... yet",Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getApplicationContext(),"PairedList not implemented... yet",Toast.LENGTH_SHORT).show();
     }
-    public void BTFind(View v)
+    public void STOP(View v)
     {
-        Toast.makeText(getApplicationContext(),"Finding devices not implemented... yet",Toast.LENGTH_SHORT).show();
+
+        current.interrupt();
+        //Toast.makeText(getApplicationContext(),"Finding devices not implemented... yet",Toast.LENGTH_SHORT).show();
     }
+
+
 }

@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -32,7 +33,8 @@ public class PairedList extends ActionBarActivity {
         plist = (ListView) findViewById(R.id.listView);
         ArrayAdapter<String> L = new ArrayAdapter<String>(this,R.layout.row,devices);
         plist.setAdapter(L);
-
+      /*  EditText et1= (EditText) findViewById(R.id.editText);
+        et1.setText(devices.get(0));*/
     }
 
 
@@ -42,6 +44,8 @@ public class PairedList extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_paired_list, menu);
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

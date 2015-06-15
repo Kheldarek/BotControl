@@ -37,35 +37,26 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/result"
-        android:layout_alignTop="@+id/BTFind"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BT Client"
+        android:text="Ruszam!"
         android:id="@+id/BTC"
-        android:onClick="BTClient"
-        android:layout_above="@+id/BTFind"
-        android:layout_alignRight="@+id/BTFind"
-        android:layout_alignEnd="@+id/BTFind" />
+        android:onClick="BTClientActivate"
+        android:layout_below="@+id/Zaxis"
+        android:layout_alignLeft="@+id/BTFind"
+        android:layout_alignStart="@+id/BTFind"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BT SERVER"
+        android:text="Wyslij"
         android:id="@+id/BTS"
-        android:onClick="BTServer"
-        android:layout_above="@+id/BTC"
-        android:layout_alignLeft="@+id/BTC"
-        android:layout_alignStart="@+id/BTC" />
+        android:onClick="BTServerActivate"
+        android:layout_alignTop="@+id/Xaxis"
+        android:layout_alignLeft="@+id/BTFind"
+        android:layout_alignStart="@+id/BTFind"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -74,8 +65,8 @@
         android:id="@+id/VIS"
         android:onClick="BTVisible"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignLeft="@+id/BTFind"
+        android:layout_alignStart="@+id/BTFind"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -84,17 +75,28 @@
         android:text="Paired list"
         android:id="@+id/pair"
         android:onClick="BTPairedList"
-        android:layout_alignBottom="@+id/Xaxis"
-        android:layout_alignLeft="@+id/BTC"
-        android:layout_alignStart="@+id/BTC" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/BTS"
+        android:layout_alignStart="@+id/BTS"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="BT FIND"
         android:id="@+id/BTFind"
-        android:layout_above="@+id/VIS"
+        android:layout_below="@+id/BTC"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/BTFind"
+        android:minWidth="200dp"/>
 
 </RelativeLayout>
